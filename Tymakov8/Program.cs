@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 
 namespace Tymakov8
@@ -20,10 +21,23 @@ namespace Tymakov8
             Console.WriteLine($"{BankAccount1.AccountType} под номером {BankAccount1.AccountNumber} содержит {BankAccount1.AccountBalance}");
 
 
-            Console.WriteLine("Упр 8.2: 8.2 Реализовать метод, который в качестве входного параметра принимает строку string, возвращает строку типа string, буквы в которой идут в обратном порядке.");
+            Console.WriteLine("Упр 8.2: Реализовать метод - строка в обратном порядке");
             string str = "ЕМАЕ";
             char[] reverse = str.Reverse().ToArray();
             Console.WriteLine(reverse);
+
+            Console.WriteLine("Упр 8.3: Преобразовать файл");
+            Console.Write("Введите имя файла: ");
+            string file = Console.ReadLine();
+            if (!File.Exists(file))
+            {
+                Console.WriteLine("Файл не найден.");
+            }
+            string readfile = File.ReadAllText(file);
+            string upreadfile = readfile.ToUpper();
+            string newfile = "nefile.txt";
+            File.WriteAllText(newfile, upreadfile);
+            Console.WriteLine($"Новый файл выглядит так: {newfile}");
 
         }
     }
